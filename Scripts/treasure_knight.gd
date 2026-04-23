@@ -165,6 +165,7 @@ func _spawn_grapple() -> void:
 
 	grapple_flying = true
 
+
 func start_grapple_pull(point: Vector2, mode: String) -> void:
 	grapple_point = point
 	grapple_mode = mode
@@ -182,8 +183,23 @@ func _reset_player() -> void:
 	velocity = Vector2.ZERO
 	grapple_flying = false
 	grappling = false
+	grapple_point = Vector2.ZERO
 	air_grapple_available = true
+	turning = false
+	turn_dir = 0
+	jump_held = false
 	anim_player.play("Idle")
+
+
+func play_death_animation() -> void:
+	velocity = Vector2.ZERO
+	grapple_flying = false
+	grappling = false
+	grapple_point = Vector2.ZERO
+	turning = false
+	turn_dir = 0
+	jump_held = false
+	anim_player.play("Death")
 
 
 func _on_anim_finished(anim_name: StringName) -> void:
