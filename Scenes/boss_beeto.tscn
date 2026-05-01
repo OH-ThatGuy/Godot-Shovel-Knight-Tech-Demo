@@ -1,0 +1,143 @@
+[gd_scene load_steps=15 format=3 uid="uid://dlbxwn12wlsjo"]
+
+[ext_resource type="Script" uid="uid://7yylfg2vqh2r" path="res://Scripts/beeto.gd" id="1_87e82"]
+[ext_resource type="Texture2D" uid="uid://b5qbaa4nylnrj" path="res://Assets/Sprites/beeto.png" id="2_ggvw7"]
+[ext_resource type="Texture2D" uid="uid://b75b80qgwv17n" path="res://Assets/Sprites/smoke.png" id="3_sfels"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6guu"]
+size = Vector2(22, 14)
+
+[sub_resource type="Animation" id="Animation_y3r4r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 30, 17)]
+}
+
+[sub_resource type="Animation" id="Animation_ghgic"]
+resource_name = "Walk"
+length = 1.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 30, 17), Rect2(30, 0, 26, 17), Rect2(56, 0, 30, 17), Rect2(86, 0, 26, 17)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2gng0"]
+_data = {
+&"RESET": SubResource("Animation_y3r4r"),
+&"Walk": SubResource("Animation_ghgic")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgq78"]
+size = Vector2(26, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6guu"]
+atlas = ExtResource("3_sfels")
+region = Rect2(0, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghgic"]
+atlas = ExtResource("3_sfels")
+region = Rect2(24, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3r4r"]
+atlas = ExtResource("3_sfels")
+region = Rect2(48, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gng0"]
+atlas = ExtResource("3_sfels")
+region = Rect2(72, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgq78"]
+atlas = ExtResource("3_sfels")
+region = Rect2(96, 0, 24, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3t0m2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6guu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghgic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3r4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gng0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgq78")
+}],
+"loop": false,
+"name": &"smoke",
+"speed": 10.0
+}]
+
+[node name="Beeto" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+collision_layer = 4
+script = ExtResource("1_87e82")
+speed = 25.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.536743e-07, -0.49999928)
+scale = Vector2(1, 0.99999994)
+texture = ExtResource("2_ggvw7")
+region_enabled = true
+region_rect = Rect2(0, 0, 30, 17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_d6guu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2gng0")
+}
+
+[node name="WallCheckLeft" type="RayCast2D" parent="."]
+position = Vector2(-12, 0)
+target_position = Vector2(-5, 0)
+
+[node name="WallCheckRight" type="RayCast2D" parent="."]
+position = Vector2(10, 0)
+target_position = Vector2(5, 0)
+
+[node name="FloorCheckLeft" type="RayCast2D" parent="."]
+position = Vector2(-12, 0)
+target_position = Vector2(0, 10)
+
+[node name="FloorCheckRight" type="RayCast2D" parent="."]
+position = Vector2(10, 0)
+target_position = Vector2(0, 10)
+
+[node name="PlayerHitbox" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_hgq78")
+
+[node name="Smoke" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3t0m2")
+animation = &"smoke"
+frame = 4
+frame_progress = 1.0

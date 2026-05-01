@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cno0ccbn5xaos"]
+[gd_scene load_steps=20 format=3 uid="uid://cno0ccbn5xaos"]
 
 [ext_resource type="Script" uid="uid://dktd3vknn7ghx" path="res://Scripts/treasure_knight.gd" id="1_a35dj"]
 [ext_resource type="Texture2D" uid="uid://utqtny14ipf3" path="res://Assets/Sprites/TK_1.png" id="1_j74ih"]
@@ -24,6 +24,50 @@ tracks/0/keys = {
 "values": [Rect2(0, 116, 116, 116)]
 }
 
+[sub_resource type="Animation" id="Animation_o7och"]
+resource_name = "Damage"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotNode/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 1392, 116, 116)]
+}
+
+[sub_resource type="Animation" id="Animation_uh0ew"]
+resource_name = "Death"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotNode/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 1392, 115, 116), Rect2(0, 1508, 115, 116), Rect2(0, 1624, 115, 116), Rect2(115, 1624, 115, 116), Rect2(230, 1624, 115, 116), Rect2(345, 1624, 115, 116), Rect2(460, 1624, 115, 116)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PivotNode/Sprite2D:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(-1, 0), Vector2(-2, 0), Vector2(-3, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_l4ylj"]
 resource_name = "FireAir"
 length = 0.5
@@ -34,10 +78,10 @@ tracks/0/path = NodePath("PivotNode/Sprite2D:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Rect2(0, 812, 116, 116), Rect2(116, 812, 116, 116), Rect2(232, 812, 116, 116), Rect2(348, 812, 116, 116), Rect2(464, 812, 116, 116)]
+"values": [Rect2(0, 812, 116, 116), Rect2(119, 812, 116, 116), Rect2(237, 812, 116, 116), Rect2(353, 812, 116, 116), Rect2(469, 812, 116, 116), Rect2(0, 812, 116, 116)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -46,10 +90,10 @@ tracks/1/path = NodePath("PivotNode/Sprite2D:offset")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(12, 0), Vector2(15, 0), Vector2(15, 0), Vector2(11, 0)]
+"values": [Vector2(0, 0), Vector2(15, 0), Vector2(20, 0), Vector2(20, 0), Vector2(16, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_bs6yq"]
@@ -62,10 +106,10 @@ tracks/0/path = NodePath("PivotNode/Sprite2D:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Rect2(0, 696, 116, 116), Rect2(116, 696, 116, 116), Rect2(232, 696, 116, 116), Rect2(348, 696, 116, 116), Rect2(464, 696, 116, 116)]
+"values": [Rect2(0, 696, 116, 116), Rect2(118, 696, 116, 116), Rect2(237, 696, 116, 116), Rect2(353, 696, 116, 116), Rect2(473, 696, 116, 116), Rect2(0, 696, 116, 116)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -74,10 +118,66 @@ tracks/1/path = NodePath("PivotNode/Sprite2D:offset")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(10, 0), Vector2(22, 0), Vector2(24, 0), Vector2(24, 0), Vector2(21, 0)]
+"values": [Vector2(4, 0), Vector2(18, 0), Vector2(23, 0), Vector2(23, 0), Vector2(24, 0), Vector2(4, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6prya"]
+resource_name = "FireUpAir"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotNode/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 1160, 116, 116), Rect2(118, 1160, 116, 116), Rect2(237, 1160, 116, 116), Rect2(353, 1160, 116, 116), Rect2(473, 1160, 116, 116), Rect2(0, 1160, 116, 116)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PivotNode/Sprite2D:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(4, 0), Vector2(6, 0), Vector2(9, 0), Vector2(10, 0), Vector2(19, 0), Vector2(4, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gtt8b"]
+resource_name = "FireUpGround"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotNode/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 1044, 116, 116), Rect2(118, 1044, 116, 116), Rect2(237, 1044, 116, 116), Rect2(353, 1044, 116, 116), Rect2(473, 1044, 116, 116), Rect2(0, 1044, 116, 116)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PivotNode/Sprite2D:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(4, 0), Vector2(6, 0), Vector2(9, 0), Vector2(10, 0), Vector2(19, 0), Vector2(4, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_nvday"]
@@ -203,9 +303,9 @@ tracks/1/keys = {
 "values": [Vector2(0, 0), Vector2(-1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_uh0ew"]
-resource_name = "Death"
-length = 0.7
+[sub_resource type="Animation" id="Animation_1vdeb"]
+resource_name = "Knockback"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -213,10 +313,10 @@ tracks/0/path = NodePath("PivotNode/Sprite2D:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Rect2(0, 1392, 115, 116), Rect2(0, 1508, 115, 116), Rect2(0, 1624, 115, 116), Rect2(115, 1624, 115, 116), Rect2(230, 1624, 115, 116), Rect2(345, 1624, 115, 116), Rect2(460, 1624, 115, 116)]
+"values": [Rect2(0, 1740, 116, 116), Rect2(116, 1740, 116, 116), Rect2(232, 1740, 116, 116)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -225,24 +325,28 @@ tracks/1/path = NodePath("PivotNode/Sprite2D:offset")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(-1, 0), Vector2(-2, 0), Vector2(-3, 0)]
+"values": [Vector2(0, 0), Vector2(-3, 0), Vector2(-3, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bs6yq"]
 _data = {
 &"Crouch": SubResource("Animation_a5gda"),
+&"Damage": SubResource("Animation_o7och"),
 &"Death": SubResource("Animation_uh0ew"),
 &"FireAir": SubResource("Animation_l4ylj"),
 &"FireGround": SubResource("Animation_bs6yq"),
+&"FireUpAir": SubResource("Animation_6prya"),
+&"FireUpGround": SubResource("Animation_gtt8b"),
 &"Idle": SubResource("Animation_nvday"),
 &"JumpDown": SubResource("Animation_70pta"),
 &"JumpUp": SubResource("Animation_hb58t"),
 &"RESET": SubResource("Animation_qej70"),
 &"Run": SubResource("Animation_a35dj"),
-&"Turn": SubResource("Animation_gbgs7")
+&"Turn": SubResource("Animation_gbgs7"),
+&"Victory": SubResource("Animation_1vdeb")
 }
 
 [node name="Treasure Knight" type="CharacterBody2D"]
